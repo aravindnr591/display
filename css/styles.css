@@ -1,0 +1,96 @@
+
+#game_container {
+  float: left;
+  
+  border: 1px solid #CCC;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+#game_status
+{
+  font-size: 22px;
+}
+.mines_row
+{
+  display: flex;
+}
+
+.cell {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #CCC;
+  padding: 10px 5px 5px 5px;
+
+  background-color: #EEE;
+
+  font-size: 16px;
+  text-align: center;
+  /* box-shadow: inset 5px 5px 10px #FFF, inset -3px -3px 5px #777; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  
+  cursor: pointer;
+  transition-property: background-color, box-shadow;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+.cell::selection {
+  background: transparent;
+}
+.cell.revealed, .cell.flagged {
+  cursor: default;
+}
+.cell.revealed {
+  background-color: #DDD;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+$cellColors: (
+  1: 'blue',
+  2: 'green',
+  3: 'red',
+  4: 'purple',
+  5: 'maroon',
+  6: 'turquoise',
+  7: 'black',
+  8: 'white'
+);
+
+@each $name, $value in $cellColors {
+  .cell.adj-#{$name} {
+    color: #{$value};
+  }
+}
+
+.cell.adj-M {
+  background-color: #ff0000;
+}
+
+.cell.flagged {
+  font-family: "FontAwesome";
+}
+.cell.flagged:after {
+}
+
+.status_msg {
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+
+#attackframe {
+  
+  display: block;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s ease-in;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
